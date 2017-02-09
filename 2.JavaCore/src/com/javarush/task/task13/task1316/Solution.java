@@ -20,8 +20,7 @@ public class Solution {
 
         final String NAME = "Submit";
 
-        public void onPress();
-
+        String onPress(Object o);
 
     }
 }
