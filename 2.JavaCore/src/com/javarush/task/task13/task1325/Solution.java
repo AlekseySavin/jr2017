@@ -18,14 +18,9 @@ public class Solution {
         Color getColor();
     }
 
-    public static class Fox implements Animal {
+    public abstract static class Fox implements Animal {
         public String getName() {
             return "Fox";
-        }
-
-        @Override
-        public Color getColor() {
-            return null;
         }
     }
 
@@ -33,7 +28,7 @@ public class Solution {
 
         @Override
         public Color getColor() {
-            return super.getColor();
+            return getColor();
         }
 
         @Override
