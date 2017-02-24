@@ -6,7 +6,7 @@ Bingo-2!
 
 public class Solution {
     public static void main(String[] args) {
-        Cat cat = new TomCat();
+        Cat cat =  new TomCat();
 
         boolean isCat = cat instanceof Cat;
         boolean isMovable = cat instanceof Movable;
