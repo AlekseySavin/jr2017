@@ -14,7 +14,7 @@ public class Solution {
 
     public static class GenerateThread extends Thread {
 
-        GenerateThread () {
+        public GenerateThread () {
             super(String.valueOf(++countCreatedThreads));
             start();
         }
