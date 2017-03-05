@@ -18,10 +18,8 @@ public class Solution {
     }
 
     public static class GenerateThread extends Thread {
-
         GenerateThread() {
-            super(String.valueOf(countCreatedThreads));
-            countCreatedThreads++;
+            super(String.valueOf(countCreatedThreads++));
             run();
         }
 
