@@ -21,14 +21,13 @@ public class Solution {
         String sex = "" ;
         Date date = null;
 
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
-        SimpleDateFormat outform = new SimpleDateFormat("DD-MMM-yyyy", Locale.ENGLISH);
+        SimpleDateFormat informat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        SimpleDateFormat outform = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
         if (args[0].equals("-c")) {
             name = args[1];
             sex = args[2];
-            date = format.parse(args[3]);
-            System.out.println(date);
+            date = informat.parse(args[3]);
 
             //parse sex
             if (args[2].equals("м")) {
@@ -41,11 +40,10 @@ public class Solution {
                 allPeople.add(Person.createFemale(name, date));
             }
 
-            for (int i = 0; i < allPeople.size() ; i++) {
-                if (name.equals(allPeople.get(i).getName())) {
-                    System.out.println(i);
-                }
-            }
+            int index = allPeople.size() - 1;
+
+            System.out.println(index);
+
         }
 
         else if (args[0].equals("-u")) {
@@ -53,7 +51,7 @@ public class Solution {
 
             name = args[2];
             sex = args[3];
-            date = format.parse(args[4]);
+            date = informat.parse(args[4]);
 
             allPeople.get(index).setName(name);
             //parse sex
@@ -87,7 +85,10 @@ public class Solution {
             if (allPeople.get(index).getSex().equals(Sex.FEMALE)) {
                 sex = "ж";
             }
-            System.out.println(name + " " + sex + " " + outform.format(allPeople.get(index).getBirthDay()));
+
+            date = allPeople.get(index).getBirthDay();
+
+            System.out.println(name + " " + sex + " " + outform.format(date));
         }
 
     }
