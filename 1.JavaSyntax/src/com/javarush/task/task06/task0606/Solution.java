@@ -14,16 +14,14 @@ public class Solution {
     public static void main(String[] args) throws IOException {
         //напишите тут ваш код
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        Integer line = Integer.parseInt(reader.readLine());
+        Integer x = Integer.parseInt(reader.readLine());
 
-        int[] digits = Integer.toString(line).chars().map(c -> c-='0').toArray();
-
-        for (int i = 0; i <= digits.length -1; i++) {
-            if ((digits[i] % 2) == 0)  {
+        for (char num : x.toString().toCharArray()
+             ) {
+            if ((num) % 2 == 0) {
                 even++;
             }
-            else
-                odd++;
+            else odd++;
         }
 
         System.out.println("Even: " + even + " Odd: " + odd);
