@@ -25,10 +25,10 @@ public class Solution {
             if (koeff < 18.5) {
                 System.out.println("Недовес: меньше чем 18.5");
             } else if
-                    (koeff > 18.5 || koeff < 24.9) {
+                    (koeff > 18.5 && koeff < 24.9) {
                 System.out.println("Нормальный: между 18.5 и 24.9");
             }
-            else if (koeff > 25 || koeff < 29.9) {
+            else if (koeff > 25 && koeff < 29.9) {
                 System.out.println("Избыточный вес: между 25 и 29.9");
             }
             else if (koeff > 30) {
