@@ -9,6 +9,7 @@ package com.javarush.task.task09.task0906;
 
 Пример вывода:
 com.javarush.task.task09.task0906.Solution: main: In main method
+
 */
 
 public class Solution {
@@ -24,4 +25,3 @@ public class Solution {
         System.out.println(s1.toString() + ": "+ s2 + ": " + s);
     }
     }
-
