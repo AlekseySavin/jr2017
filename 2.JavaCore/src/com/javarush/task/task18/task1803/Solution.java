@@ -28,7 +28,7 @@ public class Solution {
         fileInputStream.close();
         int maxcount = 0;
         int maxval = 0;
-        ArrayList<Integer, String> maxcounts = new ArrayList<>();
+        ArrayList<Integer> maxcounts = new ArrayList<>();
 
         for (Map.Entry entry : map.entrySet()) {
             if (maxcount <= (int) entry.getValue()) {
