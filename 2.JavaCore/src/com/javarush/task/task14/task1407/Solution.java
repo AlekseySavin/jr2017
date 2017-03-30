@@ -28,13 +28,11 @@ public class Solution {
         //напишите тут ваш код
         //todo what about tests? why is incorrect?
 
-        if (person.getClass().toString().contains("Player")) {
-            Player player = new Player();
-            player.play();
+        if (person instanceof Dancer) {
+            ((Dancer) person).dance();
         }
-        if (person.getClass().toString().contains("Dancer")) {
-            Dancer dancer = new Dancer();
-            dancer.dance();
+        if (person instanceof Player) {
+            ((Player) person).play();
         }
     }
 
