@@ -11,21 +11,21 @@ public class Solution {
     public Solution append(CharSequence s) {
 
             if (s == null) {
-                synchronized (this) {
+
                     s = "null";
-                }
+
             }
 
             if (s instanceof String) {
-                synchronized (this) {
+
                     return this.append((String) s);
-                }
+
             }
 
             if (s instanceof Solution) {
-                synchronized (this) {
+
                     return this.appendThis((Solution) s);
-                }
+
             }
 
         return this.append(s);
@@ -45,14 +45,13 @@ public class Solution {
 
     private synchronized void writeObject(java.io.ObjectOutputStream s) throws java.io.IOException {
         java.io.ObjectOutputStream.PutField fields = s.putFields();
-        synchronized (fields) {
+
             fields.put("value", value);
             fields.put("count", count);
             fields.put("shared", false);
-        }
-        synchronized (s) {
+
             s.writeFields();
-        }
+
     }
 
     private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
