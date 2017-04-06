@@ -27,13 +27,8 @@ public class Solution {
 
         fileInputStream.close();
 
-        int minval = map.get(byteReadTemp);
 
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() < map.size())
-            }
-            }
-        }
     }
+}
 
 
