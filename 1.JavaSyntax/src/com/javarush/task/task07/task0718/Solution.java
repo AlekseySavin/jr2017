@@ -3,32 +3,28 @@ package com.javarush.task.task07.task0718;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.Buffer;
 import java.util.ArrayList;
 
 /* 
 Проверка на упорядоченность
 */
 public class Solution {
-    public static void main(String[] args) throws IOException, IndexOutOfBoundsException {
+    public static void main(String[] args) throws IOException {
         //напишите тут ваш код
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        BufferedReader rea = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        ArrayList<String> list = new ArrayList<String>();
 
         for (int i = 0; i < 10 ; i++) {
-            list.add(Integer.parseInt(rea.readLine()));
+            list.add(bufferedReader.readLine());
         }
 
-        for (int i = 0; i < list.size() ; i++) {
-            int lentwo = list.get(i + 1).toString().length();
-            int lenone = list.get(i).toString().length();
-            System.out.println(lenone + " and " + lentwo);
-            if ( lenone < lentwo)
-                continue;
-            else {
+        //Начинаем с первого элемента! (i = 1)
+        for (int i = 1; i < list.size() ; i++) {
+            if (list.get(i).length() < list.get(i-1).length()) {
                 System.out.println(i);
                 break;
             }
-
         }
     }
 }
