@@ -13,7 +13,7 @@ public class Solution {
             System.out.println("Work!");
         }
     }
-g
+
     public static boolean isWork(CompItem item) {
         System.out.println(item.getName());
         return item.getName() != null && item.getName().length() > 4;
