@@ -41,11 +41,11 @@ id соответствует индексу в списке
 1. Класс Solution должен содержать public static volatile поле allPeople типа List. +
 2. Класс Solution должен содержать статический блок, в котором добавляются два человека в список allPeople. +
 3. При параметре -с программа должна добавлять всех людей с заданными параметрами в конец списка allPeople, и выводить id каждого (index) на экран. +
-4. При параметре -u программа должна обновлять данные людей с заданными id в списке allPeople.
-5. При параметре -d программа должна логически удалять людей с заданными id в списке allPeople.
-6. При параметре -i программа должна выводить на экран данные о всех людях с заданными id по формату указанному в задании.
-7. Метод main класса Solution должен содержать оператор switch по значению args[0].
-8. Каждый case оператора switch должен иметь блок синхронизации по allPeople.
+4. При параметре -u программа должна обновлять данные людей с заданными id в списке allPeople. +
+5. При параметре -d программа должна логически удалять людей с заданными id в списке allPeople. +
+6. При параметре -i программа должна выводить на экран данные о всех людях с заданными id по формату указанному в задании. +
+7. Метод main класса Solution должен содержать оператор switch по значению args[0]. +
+8. Каждый case оператора switch должен иметь блок синхронизации по allPeople. +
 */
 
 public class Solution {
@@ -62,22 +62,70 @@ public class Solution {
             case "-c":
                 synchronized (allPeople) {
                     SimpleDateFormat dateFormatln = new SimpleDateFormat("dd/MM/yyyy");
-                    for (int i = 1; i < args.length ; i += 3) {
-                        Date date = dateFormatln.parse(args[i+2]);
-                        switch (args[i+1]) {
+                    for (int i = 1; i < args.length; i += 3) {
+                        Date date = dateFormatln.parse(args[i + 2]);
+                        switch (args[i + 1]) {
                             case "м":
                                 allPeople.add(Person.createMale(args[i], date));
                                 break;
                             case "ж":
                                 allPeople.add(Person.createFemale(args[i], date));
+                                break;
                         }
-                        System.out.println(allPeople.size()-1);
+                        System.out.println(allPeople.size() - 1);
                     }
                 }
+                break;
+            case "-u":
+                synchronized (allPeople) {
+                    SimpleDateFormat dateFormatln = new SimpleDateFormat("dd/MM/yyyy");
+                    for (int i = 1; i < args.length; i += 4) {
+                        allPeople.get(Integer.parseInt(args[i])).setName(args[i + 1]);
+                        switch (args[i + 3]) {
+                            case "м":
+                                allPeople.get(Integer.parseInt(args[i])).setSex(Sex.MALE);
+                                break;
+                            case "ж":
+                                allPeople.get(Integer.parseInt(args[i])).setSex(Sex.FEMALE);
+                                break;
+                        }
+                        allPeople.get(Integer.parseInt(args[i])).setBirthDay(dateFormatln.parse(args[i + 3]));
+                    }
+                }
+                break;
             case "-d":
                 synchronized (allPeople) {
-                    ;
+                    for (int i = 1; i < args.length ; i++) {
+                        allPeople.get(Integer.parseInt(args[i])).setName(null);
+                        allPeople.get(Integer.parseInt(args[i])).setSex(null);
+                        allPeople.get(Integer.parseInt(args[i])).setBirthDay(null);
+                    }
                 }
+                break;
+            case "-i":
+                synchronized (allPeople) {
+                    SimpleDateFormat dateFormatln = new SimpleDateFormat("dd-MMM-yyyy");
+                    for (int i = 1; i < args.length; i++) {
+                        String name = null;
+                        char sex = 'x';
+                        String date = null;
+                        int index = Integer.parseInt(args[i]);
+
+                        name = allPeople.get(index).getName();
+
+                        if (allPeople.get(index).getSex().equals(Sex.MALE))
+                            sex = 'м';
+                        if (allPeople.get(index).getSex().equals(Sex.FEMALE))
+                            sex = 'ж';
+
+                        date = dateFormatln.format(allPeople.get(index).getBirthDay());
+
+                        System.out.println(name + ' ' + sex + ' ' + date);
+                    }
+                }
+                break;
         }
+        }
+
     }
-}
+
