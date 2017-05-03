@@ -32,12 +32,11 @@ public class Solution {
         list.add(0, 1);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        for (int i = 0; i < 9 ; i++) {
+        for (int i = 0; i < 10 ; i++) {
             list.add(Integer.parseInt(reader.readLine()));
         }
 
-        int max = 1, x = 1;
-
+        int max = 1, x = 0;
 
         for (int i = 0; i < 9 ; i++) {
             if (list.get(i) == list.get(i+1)) {
@@ -48,7 +47,6 @@ public class Solution {
             }
             if (max < x) max = x;
         }
-        System.out.println(x);
         System.out.println(max);
     }
 }
