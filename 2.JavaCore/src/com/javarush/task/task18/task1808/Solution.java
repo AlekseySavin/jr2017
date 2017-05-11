@@ -32,7 +32,9 @@ public class Solution {
         FileOutputStream fileOutputStreamOne = new FileOutputStream(filetw);
         FileOutputStream fileOutputStreamTwo = new FileOutputStream(fileth);
 
-        while (fileon.getBytes())
+        while (fileInputStreamOne.available() > -1) {
+            fileInputStreamOne.read(1,1,1);
+        }
 
     }
 }
