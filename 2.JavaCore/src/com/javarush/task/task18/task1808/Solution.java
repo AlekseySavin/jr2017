@@ -28,8 +28,11 @@ public class Solution {
         fileon = bufferedReader.readLine();
         filetw = bufferedReader.readLine();
         fileth = bufferedReader.readLine();
+        FileInputStream fileInputStreamOne = new FileInputStream(fileon);
         FileOutputStream fileOutputStreamOne = new FileOutputStream(filetw);
         FileOutputStream fileOutputStreamTwo = new FileOutputStream(fileth);
+
+        while (fileon.getBytes())
 
     }
 }
