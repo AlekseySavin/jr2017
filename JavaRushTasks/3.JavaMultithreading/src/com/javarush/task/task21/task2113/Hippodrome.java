@@ -44,6 +44,24 @@ public class Hippodrome {
         }
     }
 
+    public Horse getWinner() {
+        double maxdist = 0;
+        int ind = 0;
+        for (int i = 0; i < horses.size(); i++) {
+            if (maxdist <= horses.get(i).getDistance()) {
+                maxdist = horses.get(i).getDistance();
+                ind = i;
+            }
+        }
+        return getHorses().get(ind);
+
+    }
+
+    public void printWinner() {
+        Horse winner = getWinner();
+        System.out.println("Winner is " + winner.getName() +"!");
+    }
+
 
     public static void main(String[] args) {
 
@@ -62,9 +80,11 @@ public class Hippodrome {
 
         try {
             game.run();
+            game.printWinner();
         }
         catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 }
