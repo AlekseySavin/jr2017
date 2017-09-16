@@ -15,39 +15,37 @@ public class Solution {
 
         for (int i = 0; i < 3; i++) {
             files[i] = reader.readLine();
+            System.out.println(i+1);
         }
 
         for (int i = 0; i < files.length; i++) {
             switch (i){
                 case 0:
                     // создать поток для записи
+                    FileOutputStream fileOutputStream = new FileOutputStream(files[0]);
+                    FileInputStream fileInputStream = new FileInputStream(files[1]);
+                    while (fileInputStream.available() != 0) {
+                        fileOutputStream.write(fileInputStream.read());
+                    }
+                    fileInputStream.close();
+                    fileOutputStream.close();
+
                     break;
                 case 1:
                     // создать поток для чтения
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(files[0]));
-                    BufferedReader fileReader = new BufferedReader(new FileReader(files[1]));
-                    StringBuilder sb = new StringBuilder();
-                    while (fileReader.ready()) {
-                        sb = sb.append(fileReader.readLine() + "\n");
+                    fileInputStream = new FileInputStream(files[2]);
+                    fileOutputStream = new FileOutputStream(files[0], true);
+
+                    while (fileInputStream.available() != 0) {
+                        fileOutputStream.write(fileInputStream.read());
+
                     }
-                    writer.write(sb.toString());
-                    writer.flush();
-                    fileReader.close();
-                    writer.close();
+                    fileInputStream.close();
+                    fileOutputStream.close();
                     break;
                 case 2:
 
-                    writer = new BufferedWriter(new FileWriter(files[0], true));
-                    fileReader = new BufferedReader(new FileReader(files[2]));
 
-                    sb = new StringBuilder();
-                    while (fileReader.ready()) {
-                        sb = sb.append(fileReader.readLine() + "\n");
-                    }
-                    writer.append(sb);
-                    writer.flush();
-                    fileReader.close();
-                    writer.close();
                     break;
             }
         }
